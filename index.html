@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title>WebRTC multi-chat - Benjamin Brown
+	<link rel="stylesheet" href="style.css"></title>
+
+	<script src = "https://code.jquery.com/jquery-2.1.4.js" </script>
+	<script src = "http://simplewebrtc.com/latest.js"></script> 
+	<script src = "multi-chat.js"></script>
+</head>
+<body>
+	<h2>Create multi-chat room</h2>
+	<form id ="createRoom">
+	<input id = "sessionInput"/>
+	<button type = "submit">Create Room</button>
+	</form>
+
+	<button id = "screenShareButton"></button><br><span id="subTitle">(https required for screensharing)</span>
+
+	<div id="roomLink" style="font-size:18px; color:#f00"></div>
+
+	<video id="localVideo" width="180" sytle="margin-top:15px;"></video>
+
+	<div id="remoteVideos"></div>
+
+</body>
+</html>
