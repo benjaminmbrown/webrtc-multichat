@@ -1,24 +1,27 @@
 window.onload = function(){
 
-
 //grab room from URL
- var room = location.search && location.search.split('?')[1];
+var room = location.search && location.search.split('?')[1];
 
 
 
 //create webRTC connection
 
 var webrtc = new SimpleWebRTC({
+	// the id/element dom element that will hold "our" video
 	localVideoEl : 'localVideo',
-	remoteVideosEl : 'remoteVideos',
-	autoRequestMedia: true,
-	log: true
-});
+	  // the id/element dom element that will hold remote videos
+	  remoteVideosEl : 'remoteVideos',
+	  // immediately ask for camera access
+	  autoRequestMedia: true,
+	  log: true
+	});
 
 //when everything is ready and have a room ULR, join call
 webrtc.on ('readyToCall', function(){
-	if(room) webrtc.joinRoom(room);
-})
+	  // you can name it anything
+	  if(room) webrtc.joinRoom(room);
+	})
 
 
 //set the room name
@@ -34,11 +37,11 @@ function setRoom(name){
 
 //if there's a room, expose it in UI
 if (room){
-		console.log('Room exists, proceeding to room setup');
+	console.log('Room exists, proceeding to room setup');
 	setRoom(room);
 }else{
 	$('form').submit(function(){
-			console.log('form submittied ');
+		console.log('form submittied ');
 		var val = $('#sessionInput').val().toLowerCase().replace(/\s/g,'-');
 		console.log(val);
 		webrtc.createRoom(val, function(err,name){
@@ -51,10 +54,4 @@ if (room){
 		return false;
 	})
 }
-
-
-
-
-
-
 }
