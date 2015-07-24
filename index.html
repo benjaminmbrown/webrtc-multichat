@@ -4,86 +4,26 @@
 	<link rel="stylesheet" href="style.css"></title>
 	<script type="text/javascript" src = "https://code.jquery.com/jquery-2.1.4.js"> </script>
 	<script type="text/javascript" src = "http://simplewebrtc.com/latest.js"></script> 
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
 	<script type="text/javascript" src = "multi-chat.js"></script>
 </head>
 <body>
-	<h2>Create multi-chat room</h2>
+	<h2>Multi-User Video Chat with WebRTC via SimpleWebRTC.js</h2>
 	<form id ="createRoom">
 		<input id = "sessionInput"/>
 		<button type = "submit">Create Room</button>
 	</form>
+	<!--Enable screenshare-->
+	<!-- <button id="screenShareButton"></button></body><span id="subTitle">(https required for screenshare)</span> -->
 
-	<div id="roomLink" style="font-size:18px; color:#f00">Share this link with others:</div>
+	<div id="roomLink" style="font-size:18px; color:#f00"></div>
 
 	<video id="localVideo" width="180" sytle="margin-top:15px;"></video>
 
 	<div id="remoteVideos"></div>
 
 </body>
-<!-- <script src = "multi-chat.js"></script> -->
-
-<script>
-window.onload = function(){
-
-//grab room from URL
-var room = location.search && location.search.split('?')[1];
-
-//create webRTC connection
-var webrtc = new SimpleWebRTC({
-	// the id/element dom element that will hold "our" video
-	localVideoEl : 'localVideo',
-	  // the id/element dom element that will hold remote videos
-	  remoteVideosEl : 'remoteVideos',
-	  // immediately ask for camera access
-	  autoRequestMedia: true,
-	  log: true
-	});
-
-//when everything is ready and have a room ULR, join call
-webrtc.on ('readyToCall', function(){
-	  // you can name it anything
-	  if(room) webrtc.joinRoom(room);
-	})
-
-
-//set the room name
-
-function setRoom(name){
-	console.log('setting up room');
-	$('form').remove();
-	$('h1').text("Welcome to room:" + name);
-	$('#subTitle').text("Share this link with anyone you want to join");
-	$('#roomLink').text(location.href);
-	$('body').addClass('active');
-}
-
-//if there's a room, expose it in UI
-if (room){
-	console.log('Room exists, proceeding to room setup');
-	setRoom(room);
-}else{
-	$('form').submit(function(){
-		console.log('form submittied ');
-		var val = $('#sessionInput').val().toLowerCase().replace(/\s/g,'-');
-		console.log(val);
-		webrtc.createRoom(val, function(err,name){
-			var newUrl = location.pathname +'?'+name;
-			if(!err){
-				history.replaceState({foo:'bar'}, null, newUrl);
-				setRoom(name);
-			}
-		});
-		return false;
-	})
-}
-}
-
-
-
-
-</script>
 
 </html>
 
