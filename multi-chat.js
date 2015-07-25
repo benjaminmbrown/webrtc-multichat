@@ -40,7 +40,7 @@ window.onload = function(){
 		$('form').submit(function(){
 			console.log('form submittied ');
 			var val = $('#sessionInput').val().toLowerCase().replace(/\s/g,'-');
-			console.log(val);
+		
 			webrtc.createRoom(val, function(err,name){
 				var newUrl = location.pathname +'?'+name;
 				if(!err){
@@ -55,24 +55,24 @@ window.onload = function(){
 
 //Enable screensharing via screenshare support
 
-// var button = $('#screenShareButton'), 
-// 	setButton = function(bool){
-// 		button.text(bool ? 'share screen' : 'stop sharing screen');
-// 	};
+var button = $('#screenShareButton'), 
+	setButton = function(bool){
+		button.text(bool ? 'share screen' : 'stop sharing screen');
+	};
 
-// 	setButton(true);
+	setButton(true);
 
-// 	if(!webrtc.screenSharingSupport){
-// 		button[0].disabled = true;
-// 	}else{
-// 		button.click(function(){
-// 			if(webrtc.localScreen){
-// 				webrtc.stopScreenShare();
-// 				setButton(true):
-// 			}else{
-// 				webrtc.shareScreen();
-// 				setButton(false);
-// 			}
-// 		});
-// 	}
+	if(!webrtc.screenSharingSupport){
+		button[0].disabled = true;
+	}else{
+		button.click(function(){
+			if(webrtc.localScreen){
+				webrtc.stopScreenShare();
+				setButton(true);
+			}else{
+				webrtc.shareScreen();
+				setButton(false);
+			}
+		});
+	}
 }

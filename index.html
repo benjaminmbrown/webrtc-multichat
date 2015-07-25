@@ -4,24 +4,37 @@
 	<link rel="stylesheet" href="style.css"></title>
 	<script type="text/javascript" src = "https://code.jquery.com/jquery-2.1.4.js"> </script>
 	<script type="text/javascript" src = "http://simplewebrtc.com/latest.js"></script> 
-	<!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
-	<script type="text/javascript" src = "multi-chat.js"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>	<script type="text/javascript" src = "multi-chat.js"></script>
 </head>
 <body>
-	<h2>Multi-User Video Chat with WebRTC via SimpleWebRTC.js</h2>
-	<form id ="createRoom">
+<h2>Multi-User Video Chat with WebRTC via SimpleWebRTC.js</h2>
+<div class="row">
+<div class ="col-12">
+<form id ="createRoom">
 		<input id = "sessionInput"/>
 		<button type = "submit">Create Room</button>
 	</form>
 	<!--Enable screenshare-->
-	<!-- <button id="screenShareButton"></button></body><span id="subTitle">(https required for screenshare)</span> -->
-
+	 <button id="screenShareButton"></button></body><span id="subTitle">(https required for screenshare)</span> 
 	<div id="roomLink" style="font-size:18px; color:#f00"></div>
+</div>
 
+</div>
+
+<div class="row">
+ <div class="col-md-4">
+ 	
 	<video id="localVideo" width="180" sytle="margin-top:15px;"></video>
 
-	<div id="remoteVideos"></div>
+ </div>
+ <div class="col-md-8">
+ 	<div id="remoteVideos"></div>
+ </div>
+</div>
+	
+	
+	
 
 </body>
 
